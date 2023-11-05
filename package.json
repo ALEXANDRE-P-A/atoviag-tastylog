@@ -1,0 +1,23 @@
+{
+  "name": "atoviag-tastylog",
+  "version": "1.0.0",
+  "description": "tastylog web app",
+  "main": "app.js",
+  "engines": {
+    "node": "19.19.0"
+  },
+  "scripts": {
+    "build": "npm install",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "tastylog",
+    "heroku",
+    "mysql"
+  ],
+  "author": "Alexandre PA",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
