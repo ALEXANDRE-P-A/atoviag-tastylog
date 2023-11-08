@@ -25,6 +25,7 @@ app.get("/dbaccess", async (req, res, next) => {
   const { promisify } = require("util");
   const config = require("./config/mysql.config.js");
   const mysql = require("mysql");
+  const { sql } = require("@garafu/mysql-fileloader")({ root: path.join(__dirname, "./lib/database/sql") });
 
   const connection = mysql.createConnection({
     host: config.HOST,
@@ -44,7 +45,7 @@ app.get("/dbaccess", async (req, res, next) => {
 
   try {
     await client.connect();
-    data =  await client.query("SELECT * FROM t_user WHERE id = 1000");
+    data =  await client.query(await sql("SELECT_SHOP_BY_ID"));
     console.log(data);
   } catch(err) {
     next(err);
@@ -52,7 +53,7 @@ app.get("/dbaccess", async (req, res, next) => {
     await client.end();
   }
 
-  res.send("connection OK.");
+  res.send("shop table connection OK.");
 });
 
 // Set application logger.
