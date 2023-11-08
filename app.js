@@ -27,16 +27,13 @@ app.get("/dbaccess", async (req, res, next) => {
   let data;
 
   try {
-    await MySQLClient.connect();
-    data =  await MySQLClient.query(await sql("SELECT_SHOP_BY_ID"));
+    data = await MySQLClient.executeQuery(await sql("SELECT_SHOP_BY_ID"),[2]);
     console.log(data);
   } catch(err) {
     next(err);
-  } finally {
-    await MySQLClient.end();
   }
 
-  res.send("shop table connection OK.");
+  res.send("pool connection OK.");
 });
 
 // Set application logger.
