@@ -22,35 +22,18 @@ app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
 // Dynamic resources.
 app.use("/", require("./routes/index.js"));
 app.get("/dbaccess", async (req, res, next) => {
-  const { promisify } = require("util");
-  const config = require("./config/mysql.config.js");
-  const mysql = require("mysql");
-  const { sql } = require("@garafu/mysql-fileloader")({ root: path.join(__dirname, "./lib/database/sql") });
-
-  const connection = mysql.createConnection({
-    host: config.HOST,
-    port: config.PORT,
-    user: config.USERNAME,
-    password: config.PASSWORD,
-    database: config.DATABASE
-  });
-
-  const client = {
-    connect: promisify(connection.connect).bind(connection),
-    query: promisify(connection.query).bind(connection),
-    end: promisify(connection.end).bind(connection)
-  };
+  const { MySQLClient, sql } = require("./lib/database/client.js");
 
   let data;
 
   try {
-    await client.connect();
-    data =  await client.query(await sql("SELECT_SHOP_BY_ID"));
+    await MySQLClient.connect();
+    data =  await MySQLClient.query(await sql("SELECT_SHOP_BY_ID"));
     console.log(data);
   } catch(err) {
     next(err);
   } finally {
-    await client.end();
+    await MySQLClient.end();
   }
 
   res.send("shop table connection OK.");
