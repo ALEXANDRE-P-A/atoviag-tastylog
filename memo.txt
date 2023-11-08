@@ -1,0 +1,5 @@
+#access DB from commandline
+>mysql -uqt0zajwe5dzqcwc6 -p -huyu7j8yohcwo35j3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com -Dcngup8bqb6waejob
+and then enter the password
+
+#import tables using MySQL workbench

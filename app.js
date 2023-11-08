@@ -21,6 +21,39 @@ app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
 
 // Dynamic resources.
 app.use("/", require("./routes/index.js"));
+app.get("/dbaccess", async (req, res, next) => {
+  const { promisify } = require("util");
+  const config = require("./config/mysql.config.js");
+  const mysql = require("mysql");
+
+  const connection = mysql.createConnection({
+    host: config.HOST,
+    port: config.PORT,
+    user: config.USERNAME,
+    password: config.PASSWORD,
+    database: config.DATABASE
+  });
+
+  const client = {
+    connect: promisify(connection.connect).bind(connection),
+    query: promisify(connection.query).bind(connection),
+    end: promisify(connection.end).bind(connection)
+  };
+
+  let data;
+
+  try {
+    await client.connect();
+    data =  await client.query("SELECT * FROM t_user WHERE id = 1000");
+    console.log(data);
+  } catch(err) {
+    next(err);
+  } finally {
+    await client.end();
+  }
+
+  res.send("connection OK.");
+});
 
 // Set application logger.
 app.use(applicationlogger());
