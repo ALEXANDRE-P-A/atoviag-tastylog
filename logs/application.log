@@ -2,3 +2,7 @@
 [2023-11-09T07:50:37.186] [INFO] application - Application listening at http://127.0.0.1:8080
 [2023-11-09T08:04:45.281] [INFO] application - Application listening at http://127.0.0.1:8080
 [2023-11-09T08:06:00.526] [INFO] application - Application listening at http://127.0.0.1:8080
+[2023-11-09T08:16:16.515] [INFO] application - Application listening at http://127.0.0.1:8080
+[2023-11-09T08:16:18.932] [ERROR] application - require() of ES Module C:\Users\alexa\OneDrive\デスクトップ\atoviag-tastylog\node_modules\round-to\index.js from C:\Users\alexa\OneDrive\デスクトップ\atoviag-tastylog\lib\math\math.js not supported.
+Instead change the require of index.js in C:\Users\alexa\OneDrive\デスクトップ\atoviag-tastylog\lib\math\math.js to a dynamic import() which is available in all CommonJS modules.
+[2023-11-09T08:22:10.830] [INFO] application - Application listening at http://127.0.0.1:8080
