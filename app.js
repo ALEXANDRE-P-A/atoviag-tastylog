@@ -26,26 +26,14 @@ app.use(accesslogger());
 app.use("/public", express.static(path.join(__dirname, "/public")));
 app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
 
+// Set middleware for POST method.
+app.use(express.urlencoded({ extended: true }));
+
 // Dynamic resources.
 app.use("/", require("./routes/index.js"));
 app.use("/shops", require("./routes/shops.js"));
 app.use("/search", require("./routes/search.js"));
-app.get("/transaction", async (req, res, next) => {
-  const { MySQLClient } = require("./lib/database/client.js");
-  let tran;
-  try {
-    tran = await MySQLClient.beginTransaction();
-    tran.executeQuery(
-      "UPDATE t_shop SET score = ? WHERE id = ?",
-      [3.33, 1]
-    );
-    await tran.commit();
-    res.send("Transanction OK");
-  } catch(err) {
-    await tran.rollback();
-    next(err);
-  }
-});
+app.use("/account", require("./routes/account.js"));
 
 // Set application logger.
 app.use(applicationlogger());
