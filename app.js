@@ -28,20 +28,7 @@ app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
 
 // Dynamic resources.
 app.use("/", require("./routes/index.js"));
-app.get("/dbaccess", async (req, res, next) => {
-  const { MySQLClient, sql } = require("./lib/database/client.js");
-
-  let data;
-
-  try {
-    data = await MySQLClient.executeQuery(await sql("SELECT_SHOP_BY_ID"),[2]);
-    console.log(data);
-  } catch(err) {
-    next(err);
-  }
-
-  res.send("pool connection OK.");
-});
+app.use("/shops", require("./routes/shops.js"));
 
 // Set application logger.
 app.use(applicationlogger());
