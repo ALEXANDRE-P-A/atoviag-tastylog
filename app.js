@@ -29,6 +29,7 @@ app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
 // Dynamic resources.
 app.use("/", require("./routes/index.js"));
 app.use("/shops", require("./routes/shops.js"));
+app.use("/search", require("./routes/search.js"));
 
 // Set application logger.
 app.use(applicationlogger());

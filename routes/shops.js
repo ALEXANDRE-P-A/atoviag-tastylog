@@ -16,7 +16,6 @@ router.get("/:id", async (req, res, next) => {
   ]).then(results => {
     let data = results[0][0];
     data.reviews = results[1] || [];
-    console.log(data.reviews);
     res.render("./shops/index.ejs", data);
   }).catch(err => next(err));
 });
