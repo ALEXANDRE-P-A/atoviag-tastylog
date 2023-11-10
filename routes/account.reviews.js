@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { MySQLClient, sql } = require("../lib/database/client.js");
 const moment = require("moment");
 const DATE_FORMAT = "YYYY/MM/DD";
+const tokens = new (require("csrf"))();
 
 let validateReviewData = req => {
   let body = req.body;
@@ -30,10 +31,15 @@ let createReviewData = req => {
   };
 };
 
-router.get("/regist/:shopId(\\d+)", async (req, res, next) => {
+router.get("/regist/:shopId(\\d+)", async (req, res, next) => { // csrfの入口
   let shopId = req.params.shopId;
-  let shop, shopName, review, results;
-  
+  let secret, token, shop, shopName, review, results;
+
+  secret = await tokens.secret(); // secretの発行。
+  token = tokens.create(secret); // secretとtokenの生成。secretはサーバー保持(セッション)。tokenはクライアント返却(クッキー)
+  req.session.atoviag_csrf = secret; // セッションatoviag_csrfにsecretを保存
+  res.cookie("atoviag_csrf", token); // クッキーatoviag_csrfにtokenを保存
+
   try {
     results = await MySQLClient.executeQuery(
       await sql("SELECT_SHOP_BASIC_BY_ID"),
@@ -66,7 +72,15 @@ router.post("/regist/confirm", (req, res) => {
   res.render("./account/reviews/regist-confirm.ejs", { shopId, shopName, review });
 });
 
-router.post("/regist/execute", async (req, res, next) => {
+router.post("/regist/execute", async (req, res, next) => { // トークンの確認(csrfの出口)、最後に破棄
+  let secret = req.session.atoviag_csrf; // セッションからsecretを取り出す
+  let token = req.cookies.atoviag_csrf; // クッキーからtokenを取り出す
+
+  if(tokens.verify(secret, token) === false){ // secretとtokenが正しいかを確認(不正なアクセスの可能性を意味する)
+    next(new Error("Invalid Token."));
+    return;
+  }
+
   let error = validateReviewData(req);
   let review = createReviewData(req);
   let { shopId, shopName } = req.body;
@@ -97,6 +111,9 @@ router.post("/regist/execute", async (req, res, next) => {
     await transaction.rollback();
     next(err);
   }
+
+  delete req.session.atoviag_csrf; // 正常に操作できた場合はセッションを破棄する
+  res.clearCookie("atoviag_csrf"); // 正常に操作できた場合はクッキー破棄を指示
 
   res.render("./account/reviews/regist-complete.ejs", { shopId });
 });
