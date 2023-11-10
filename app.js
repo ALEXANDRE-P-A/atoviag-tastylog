@@ -7,8 +7,10 @@ const accesslogger = require("./lib/log/accesslogger.js");
 const cookie = require("cookie-parser");
 const session =  require("express-session");
 const MySqlStore = require("express-mysql-session")(session);
+const flash = require("connect-flash");
 const appconfig = require("./config/application.config.js");
 const dbconfig = require("./config/mysql.config.js");
+const accesscontrol = require("./lib/security/accesscontrol.js");
 
 const PORT = process.env.PORT || 8080;
 
@@ -55,6 +57,12 @@ app.use(session({
   saveUninitialized: true,
   name: "atoviag_sid"
 }));
+
+// Set flash.
+app.use(flash());
+
+// Set passport initialization.
+app.use(...accesscontrol.initialize());
 
 // Dynamic resources.
 app.use("/", require("./routes/index.js"));

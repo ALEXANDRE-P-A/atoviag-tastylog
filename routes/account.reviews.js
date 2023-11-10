@@ -84,7 +84,7 @@ router.post("/regist/execute", async (req, res, next) => { // トークンの確
   let error = validateReviewData(req);
   let review = createReviewData(req);
   let { shopId, shopName } = req.body;
-  let userId = "999"; // TODO:ログイン実装後に更新
+  let userId = req.user.id;
   let transaction;
 
   if(error){
