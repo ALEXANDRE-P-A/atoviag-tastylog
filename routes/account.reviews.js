@@ -115,7 +115,11 @@ router.post("/regist/execute", async (req, res, next) => { // トークンの確
   delete req.session.atoviag_csrf; // 正常に操作できた場合はセッションを破棄する
   res.clearCookie("atoviag_csrf"); // 正常に操作できた場合はクッキー破棄を指示
 
-  res.render("./account/reviews/regist-complete.ejs", { shopId });
+  res.redirect(`/account/reviews/regist/complete?shopId=${shopId}`);
+});
+
+router.get("/regist/complete", (req, res) => {
+  res.render("./account/reviews/regist-complete.ejs", { shopId: req.query.shopId });
 });
 
 module.exports = router;

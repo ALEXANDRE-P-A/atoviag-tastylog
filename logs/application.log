@@ -8,3 +8,11 @@
 [2023-11-10T13:17:31.415] [INFO] application - Application listening at http://127.0.0.1:8080
 [2023-11-10T13:18:01.817] [INFO] application - Application listening at http://127.0.0.1:8080
 [2023-11-10T13:34:24.863] [INFO] application - Application listening at http://127.0.0.1:8080
+[2023-11-10T13:57:29.468] [INFO] application - Application listening at http://127.0.0.1:8080
+[2023-11-10T15:11:41.573] [INFO] application - Application listening at http://127.0.0.1:8080
+[2023-11-10T15:14:47.710] [ERROR] application - Invalid Token.
+[2023-11-10T15:15:48.479] [ERROR] application - Invalid Token.
+[2023-11-10T15:19:04.236] [INFO] application - Application listening at http://127.0.0.1:8080
+[2023-11-10T15:20:29.848] [ERROR] application - Invalid Token.
+[2023-11-10T15:26:00.265] [INFO] application - Application listening at http://127.0.0.1:8080
+[2023-11-10T15:27:41.645] [INFO] application - Application listening at http://127.0.0.1:8080
