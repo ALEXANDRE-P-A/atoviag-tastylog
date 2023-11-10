@@ -4,6 +4,7 @@ const favicon = require("serve-favicon");
 const logger = require("./lib/log/logger.js");
 const applicationlogger = require("./lib/log/applicationlogger.js");
 const accesslogger = require("./lib/log/accesslogger.js");
+const cookie = require("cookie-parser");
 
 const PORT = process.env.PORT || 8080;
 
@@ -28,6 +29,13 @@ app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
 
 // Set middleware for POST method.
 app.use(express.urlencoded({ extended: true }));
+
+// Set middleware for cookie.
+app.use(cookie());
+app.use((req, res, next) => {
+  res.cookie("cookie-message", "cookie_to_be_saved_on_client_side");
+  next();
+});
 
 // Dynamic resources.
 app.use("/", require("./routes/index.js"));
