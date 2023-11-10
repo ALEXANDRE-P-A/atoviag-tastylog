@@ -5,6 +5,10 @@ const logger = require("./lib/log/logger.js");
 const applicationlogger = require("./lib/log/applicationlogger.js");
 const accesslogger = require("./lib/log/accesslogger.js");
 const cookie = require("cookie-parser");
+const session =  require("express-session");
+const MySqlStore = require("express-mysql-session")(session);
+const appconfig = require("./config/application.config.js");
+const dbconfig = require("./config/mysql.config.js");
 
 const PORT = process.env.PORT || 8080;
 
@@ -36,6 +40,21 @@ app.use((req, res, next) => {
   res.cookie("cookie-message", "cookie_to_be_saved_on_client_side");
   next();
 });
+
+// Use session.
+app.use(session({
+  store: new MySqlStore({
+    host: dbconfig.HOST,
+    port: dbconfig.PORT,
+    user: dbconfig.USERNAME,
+    password: dbconfig.PASSWORD,
+    database: dbconfig.DATABASE
+  }),
+  secret: appconfig.security.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  name: "atoviag_sid"
+}));
 
 // Dynamic resources.
 app.use("/", require("./routes/index.js"));
