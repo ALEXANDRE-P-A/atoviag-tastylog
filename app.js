@@ -1,4 +1,7 @@
-const IS_PRODUCTION = process.env.NODE_ENV === "production";
+// const IS_PRODUCTION = process.env.NODE_ENV === "production";
+// const env = require("dotenv");
+// env.config();
+
 const express = require("express");
 const path = require("path");
 const favicon = require("serve-favicon");
@@ -12,8 +15,6 @@ const flash = require("connect-flash");
 const appconfig = require("./config/application.config.js");
 const dbconfig = require("./config/mysql.config.js");
 const accesscontrol = require("./lib/security/accesscontrol.js");
-const env = require("dotenv");
-env.config();
 
 const PORT = process.env.PORT || 8080;
 
@@ -55,9 +56,9 @@ app.use(session({
     password: dbconfig.PASSWORD,
     database: dbconfig.DATABASE
   }),
-  cookie: {
-    secure: IS_PRODUCTION
-  },
+  // cookie: {
+  //   secure: true
+  // },
   secret: appconfig.security.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
