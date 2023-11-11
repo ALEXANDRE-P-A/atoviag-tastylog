@@ -5,6 +5,10 @@ const {
   // PRIVILEGE // 権限
 } = require("../lib/security/accesscontrol.js");
 
+router.get("/", (req, res) => {
+  res.render("./account/index.ejs");
+});
+
 router.get("/login", (req, res) => {
   res.render("./account/login.ejs", { message: req.flash("message") });
 });

@@ -10,7 +10,7 @@ let validateReviewData = req => {
 
   if(body.visit && !moment(body.visit, DATE_FORMAT).isValid()){
     isValid = false;
-    error.visit = "訪問日の日付文字列が不正です。";
+    error.visit = "The date string for the visit date is invalid.";
   }
 
   if(isValid)

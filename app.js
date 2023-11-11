@@ -1,3 +1,4 @@
+const IS_PRODUCTIION = process.env.NODE_ENV === "production";
 const express = require("express");
 const path = require("path");
 const favicon = require("serve-favicon");
@@ -52,6 +53,9 @@ app.use(session({
     password: dbconfig.PASSWORD,
     database: dbconfig.DATABASE
   }),
+  cookie: {
+    secure: IS_PRODUCTIION
+  },
   secret: appconfig.security.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
