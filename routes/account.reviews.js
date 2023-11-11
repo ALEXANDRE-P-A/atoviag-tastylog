@@ -61,12 +61,13 @@ router.post("/regist/:shopId(\\d+)", async (req, res, next) => {
 });
 
 router.post("/regist/confirm", (req, res) => {
-  let error =validateReviewData(req);
+  let error = validateReviewData(req);
   let review = createReviewData(req);
   let { shopId, shopName } = req.body;
 
   if(error){
     res.render("./account/reviews/regist-form.ejs", { error, shopId, shopName, review });
+    return;
   }
 
   res.render("./account/reviews/regist-confirm.ejs", { shopId, shopName, review });
