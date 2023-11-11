@@ -1,11 +1,11 @@
-const IS_PRODUCTIION = process.env.NODE_ENV === "production";
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
 const express = require("express");
 const path = require("path");
 const favicon = require("serve-favicon");
 const logger = require("./lib/log/logger.js");
 const applicationlogger = require("./lib/log/applicationlogger.js");
 const accesslogger = require("./lib/log/accesslogger.js");
-// const cookie = require("cookie-parser");
+const cookie = require("cookie-parser");
 const session =  require("express-session");
 const MySqlStore = require("express-mysql-session")(session);
 const flash = require("connect-flash");
@@ -39,12 +39,12 @@ app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
 // Set middleware for POST method.
 app.use(express.urlencoded({ extended: true }));
 
-// // Set middleware for cookie.
-// app.use(cookie());
-// app.use((req, res, next) => {
-//   res.cookie("cookie-message", "cookie_to_be_saved_on_client_side");
-//   next();
-// });
+// Set middleware for cookie.
+app.use(cookie());
+app.use((req, res, next) => {
+  res.cookie("cookie-message", "cookie_to_be_saved_on_client_side");
+  next();
+});
 
 // Use session.
 app.use(session({
@@ -56,7 +56,7 @@ app.use(session({
     database: dbconfig.DATABASE
   }),
   cookie: {
-    secure: IS_PRODUCTIION
+    secure: IS_PRODUCTION
   },
   secret: appconfig.security.SESSION_SECRET,
   resave: false,
