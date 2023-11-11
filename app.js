@@ -12,6 +12,8 @@ const flash = require("connect-flash");
 const appconfig = require("./config/application.config.js");
 const dbconfig = require("./config/mysql.config.js");
 const accesscontrol = require("./lib/security/accesscontrol.js");
+const env = require("dotenv");
+env.config();
 
 const PORT = process.env.PORT || 8080;
 
