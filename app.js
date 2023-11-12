@@ -66,6 +66,10 @@ app.use(session({
 }));
 
 // Set flash.
+app.get((req, res, next) => {
+  res.locals.flashMessages = req.flash();
+  next();
+});
 app.use(flash());
 
 // Set passport initialization.

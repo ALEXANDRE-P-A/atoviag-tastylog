@@ -3,7 +3,7 @@
 
 <head>
   <%- include("../_share/metadata.ejs") %>
-  <title>Shop</title>
+  <title>Restaurant</title>
   <%- include("../_share/stylesheets.ejs") %>
   <link rel="stylesheet" href="/public/stylesheets/shop.css" />
 </head>
@@ -29,50 +29,50 @@
       <div class="row">
         <div class="col-md-8">
           <div>
-            <h2 class="border-bottom mt-5 mb-5 pb-2"><i class="fa fa-fw fa-book"></i> 店舗情報</h2>
+            <h2 class="border-bottom mt-5 mb-5 pb-2"><i class="fa fa-fw fa-book"></i> Restaurant information</h2>
             <table class="table table-bordered">
               <colgroup>
                 <col class="bg-light" style="width: 10rem">
                 <col class="">
               </colgroup>
               <tr>
-                <th>店名</th>
+                <th>Restaurant Name</th>
                 <td><%= name %></td>
               </tr>
               <tr>
-                <th>カテゴリー</th>
+                <th>Category</th>
                 <td><%= categories %></td>
               </tr>
               <tr>
-                <th>電話</th>
+                <th>Tel Number</th>
                 <td><%= tel %></td>
               </tr>
               <tr>
-                <th>住所</th>
+                <th>Address</th>
                 <td>
                   <div><%= address %></div>
                   <div id="mapid"></div>
                 </td>
               </tr>
               <tr>
-                <th>定休日</th>
+                <th>Holiday</th>
                 <td><%= holiday %></td>
               </tr>
               <tr>
-                <th>座席数</th>
+                <th>Seats</th>
                 <td><%= seats %></td>
               </tr>
               <tr>
-                <th>価格帯</th>
+                <th>Price Range</th>
                 <td><%= price_range %></td>
               </tr>
             </table>
           </div>
           <div>
             <div class="position-relative">
-              <h2 class="border-bottom mt-5 mb-5 pb-2"><i class="fa fa-fw fa-comments"></i> 口コミ</h2>
+              <h2 class="border-bottom mt-5 mb-5 pb-2"><i class="fa fa-fw fa-comments"></i> Reviews</h2>
               <div class="position-absolute" style="right:0; top:0;">
-                <a class="btn btn-outline-success" href="/account/reviews/regist/<%= id %>">投稿する</a>
+                <a class="btn btn-outline-success" href="/account/reviews/regist/<%= id %>">Post a Review</a>
               </div>
             </div>
             <div>
@@ -84,7 +84,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <h2 class="border-bottom mt-5 mb-5 pb-2"><i class="fa fa-fw fa-heart"></i> おススメのお店</h2>
+          <h2 class="border-bottom mt-5 mb-5 pb-2"><i class="fa fa-fw fa-heart"></i> Recommended...</h2>
           <!-- Recommends -->
         </div>
       </div>
