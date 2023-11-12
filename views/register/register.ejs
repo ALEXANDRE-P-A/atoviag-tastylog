@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%- include("../_share/metadata.ejs") %>
+  <title>Register Page</title>
+  <%- include("../_share/stylesheets.ejs") %>
+</head>
+<body>
+  <div class="outerframe">
+    <%- include("../_share/navbar.ejs") %>
+    <main class="container">
+      <div class="border-bottom mt-5 mb-3">
+        <h1>Register Member</h1>
+      </div>
+      <div class="row justify-content-center">
+        <form method="" action="" class="col-sm-10 col-lg-8">
+          <div class="form-group row">
+            <label for="name" class="col-sm-3 col-form-label" style="text-align: center;">Username：</label>
+            <div class="col-sm-9">
+              <input type="text" id="name" name="name" class="form-control" required/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="newemail" class="col-sm-3 col-form-label" style="text-align: center;">Email：</label>
+            <div class="col-sm-9">
+              <input type="text" id="newemail" name="newemail" class="form-control" required/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="newpassword" class="col-sm-3 col-form-label" style="text-align: center;">Password：</label>
+            <div class="col-sm-9">
+              <input type="password" id="newpassword" name="newpassword" class="form-control" required/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="description" class="col-sm-3 col-form-label" style="text-align: center;">Description(optional)：</label>
+            <div class="col-sm-9">
+              <textarea id="description" name="newemail" class="form-control" required></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12 row justify-content-center">
+              <input type="submit" class="btn btn-primary" value="regiter" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+    <%- include("../_share/footer.ejs") %>
+  </div>
+  <%- include("../_share/javascripts.ejs") %>
+</body>
+</html>

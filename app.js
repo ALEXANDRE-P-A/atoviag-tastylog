@@ -80,6 +80,7 @@ app.use("/", require("./routes/index.js"));
 app.use("/shops", require("./routes/shops.js"));
 app.use("/search", require("./routes/search.js"));
 app.use("/account", require("./routes/account.js"));
+app.use("/register", require("./routes/register.js"));
 
 // Set application logger.
 app.use(applicationlogger());
