@@ -20,13 +20,14 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
+  console.log(req.body);
   const recaptchaResponse = req.body['g-recaptcha-reponse'];
 
   recaptcha.verify({ response: recaptchaResponse }, err => {
     if(err){
       res.status(400).json({ error: "Invalid reCAPTCHA" }); // Invalid or expired reCAPTCHA response
     } else {
-      passport.authenticate(
+      return passport.authenticate(
         'local-strategy',
         {
           successRedirect: "/account", // 成功時のリダイレクト先
