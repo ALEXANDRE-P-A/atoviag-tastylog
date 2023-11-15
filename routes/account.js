@@ -31,7 +31,7 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.post("/login/authenticate", (req, res) => {
+router.get("/login/authenticate", (req, res) => {
   res.end("Ok");
 });
 
