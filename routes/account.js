@@ -26,12 +26,12 @@ router.post("/login", (req, res) => {
     if(err){
       res.status(400).json({ error: "Invalid reCAPTCHA" }); // Invalid or expired reCAPTCHA response
     } else {
-      res.redirect('/account/login/authenticate');
+      res.redirect(307, '/account/login/authenticate');
     }
   });
 });
 
-router.get("/login/authenticate", authenticate());
+router.post("/login/authenticate", authenticate());
 
 router.post("/logout", (req, res, next) => {
   req.logout(err => {
