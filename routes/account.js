@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { 
-  // authenticate, // 認証処理
+  authenticate, // 認証処理
   authorize, // 認可処理
   PRIVILEGE // 権限
 } = require("../lib/security/accesscontrol.js");
@@ -31,9 +31,7 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.get("/login/authenticate", (req, res) => {
-  res.end("Ok");
-});
+router.get("/login/authenticate", authenticate());
 
 router.post("/logout", (req, res, next) => {
   req.logout(err => {
