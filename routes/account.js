@@ -21,7 +21,7 @@ router.get("/login", (req, res) => {
 
 router.post("/login", (req, res) => {
   console.log(req.body);
-  const recaptchaResponse = req.body['g-recaptcha-reponse'];
+  const recaptchaResponse = req.body['g-recaptcha-response'];
 
   recaptcha.verify({ response: recaptchaResponse }, err => {
     if(err){
