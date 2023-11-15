@@ -6,6 +6,11 @@
   <%- include("../_share/stylesheets.ejs") %>
   <!-- re-captcha implementation starts here -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script>
+    function callback_recaptcha(token){
+      document.getElementById('submit_btn').disabled = false;
+    }
+  </script>
   <!-- re-captcha implementation ends here -->
   <link rel="stylesheet" type="text/css" href="/public/stylesheets/recaptcha.css">
 </head>
@@ -51,7 +56,7 @@
           <!-- re-captcha implementation ends here -->
           <div class="form-group row">
             <div class="col-sm-12 row justify-content-center">
-              <input type="submit" class="btn btn-primary" value="regiter" />
+              <input id="submit_btn" type="submit" class="btn btn-primary" value="regiter" disabled/>
             </div>
           </div>
         </form>
