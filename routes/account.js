@@ -1,7 +1,6 @@
 const router = require("express").Router();
-const passport = require("passport");
 const { 
-  // authenticate, // 認証処理
+  authenticate, // 認証処理
   authorize, // 認可処理
   PRIVILEGE // 権限
 } = require("../lib/security/accesscontrol.js");
@@ -27,15 +26,8 @@ router.post("/login", (req, res) => {
     if(err){
       res.status(400).json({ error: "Invalid reCAPTCHA" }); // Invalid or expired reCAPTCHA response
     } else {
-      passport.authenticate(
-        'local-strategy',
-        {
-          successRedirect: "/account", // 成功時のリダイレクト先
-          failureRedirect: "/account/login" // 失敗時のリダイレクト先
-        }
-      );
+      authenticate();
     }
-
   });
 });
 
