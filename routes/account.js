@@ -27,7 +27,7 @@ router.post("/login", (req, res) => {
     if(err){
       res.status(400).json({ error: "Invalid reCAPTCHA" }); // Invalid or expired reCAPTCHA response
     } else {
-      return passport.authenticate(
+      passport.authenticate(
         'local-strategy',
         {
           successRedirect: "/account", // 成功時のリダイレクト先
