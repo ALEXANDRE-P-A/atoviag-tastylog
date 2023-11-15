@@ -8,7 +8,7 @@ const {
 
 // re-captcha implementation starts here
 const GoogleRecaptch = require("google-recaptcha");
-const recaptcha = new GoogleRecaptch({ secret: "6LcAhF0lAAAAAMYBsx19h4cDhm82IMXRKgK_LQJ_" });
+const recaptcha = new GoogleRecaptch({ secret: "6LcAhF0lAAAAALXvCkGE9iylWOFu_pjNNJzyh0Dm" });
 // re-captcha implementation ends here
 
 router.get("/", authorize(PRIVILEGE.NORMAL), (req, res) => {
