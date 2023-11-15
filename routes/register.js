@@ -2,6 +2,7 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const tokens = new (require("csrf"))();
 const { MySQLClient, sql } = require("../lib/database/client.js");
+const { main } = require("../lib/sendmail/mailer.js");
 
 router.get("/", async (req, res) => {
   let name = '', newemail = '', newpassword = '', description = '';
@@ -45,6 +46,7 @@ router.post("/execute", async (req, res, next) => {
       await sql("REGISTER_NEW_MEMBER"),
       [name, newemail, hash_pass, description, newpassword]
     );
+    main(newemail);
   } catch(err){
     next(err);
   }

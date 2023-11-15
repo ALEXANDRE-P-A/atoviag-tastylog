@@ -3,6 +3,13 @@ html, body {
   height: 100%;
 }
 
+body {
+  background-color: #fff;
+  background-image: url('/public/images/background1.png');
+  background-repeat: repeat-y;
+  background-size: 100%;
+}
+
 .outerframe {
   min-height: 100%;
   position: relative;
