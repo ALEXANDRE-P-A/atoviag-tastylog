@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { 
-  authenticate, // 認証処理
+  // authenticate, // 認証処理
   authorize, // 認可処理
   PRIVILEGE // 権限
 } = require("../lib/security/accesscontrol.js");
@@ -26,9 +26,13 @@ router.post("/login", (req, res) => {
     if(err){
       res.status(400).json({ error: "Invalid reCAPTCHA" }); // Invalid or expired reCAPTCHA response
     } else {
-      authenticate();
+      res.redirect('/account/login/authenticate');
     }
   });
+});
+
+router.post("/login/authenticate", (req, res) => {
+  res.end("Ok");
 });
 
 router.post("/logout", (req, res, next) => {
