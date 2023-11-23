@@ -34,7 +34,7 @@ let createReviewData = req => {
 router.get("/regist/:shopId(\\d+)", async (req, res, next) => { // csrfの入口
   let shopId = req.params.shopId;
   let secret, token, shop, shopName, review, results;
-
+      
   secret = await tokens.secret(); // secretの発行。
   token = tokens.create(secret); // secretとtokenの生成。secretはサーバー保持(セッション)。tokenはクライアント返却(クッキー)
   req.session.atoviag_csrf = secret; // セッションatoviag_csrfにsecretを保存
