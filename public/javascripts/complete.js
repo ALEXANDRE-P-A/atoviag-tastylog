@@ -7,4 +7,4 @@ let document_onready = event => {
   window.addEventListener("popstate", window_onpopstate);
 };
 
-document.addEventListener("DOMContentLoaded", document_onready);
+document.addEventListener("DOMContentLoaded", document_onready);    
