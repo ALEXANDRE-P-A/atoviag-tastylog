@@ -5,7 +5,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/overview", (req, res) => {
-  res.send("Application Overview");
+  res.render("./overview.ejs");
 });
 
 module.exports = router;

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%- include("./_share/metadata.ejs") %>
+  <title>Application Overview</title>
+  <%- include("./_share/stylesheets.ejs") %>
+  <style>
+    main {
+      width: 80%;
+      height: 1000px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 55px auto;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin-bottom: 25px;
+    }
+
+    th, td {
+      padding: 5px 15px;
+      border: solid 1px #959b9e;
+      width: 50%;
+    }
+
+    h2, caption {
+      font-size: 1.1em;
+      font-weight: bold;
+      caption-side: top;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      color: #6c757d;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="outerframe">
+    <%- include("./_share/navbar.ejs") %>
+    <main>
+      <table>
+        <tr>
+          <th>アプリサーバー</th><td>heroku</td>
+        </tr>
+      </table>
+        
+      <table>
+        <tr>
+          <th>データーベース</th> <td>MySQL(JawsDB Maria)</td>
+        </tr>
+      </table>
+        
+      <table>
+        <caption>機能</caption>
+        <tr>
+          <th class="text-center">名称</th><th class="text-center">概要</th>
+        </tr>
+        <tr>
+          <td>店舗情報検索</td> <td>登録されている店舗を検索、一覧表示</td>
+        </tr>
+        <tr>
+          <td>店舗情報詳細表示</td> <td>登録されている店舗の詳細を表示</td>
+        </tr>
+        <tr>
+          <td>口コミ情報登録</td> <td>店舗に対する口コミ登録</td>
+        </tr>
+        <tr>
+          <td>口コミ情報表示</td> <td>店舗詳細に口コミ情報表示</td>
+        </tr>
+      </table>
+
+      <h2>画面フロー</h2>
+
+      <h2>画面定義</h2>
+      <details>
+        <summary>ホーム画面</summary>
+        <table>
+          <tr><td>検索ボタン</td><td>テキストボックスに入力された文字列をクエリパラメータに指定して「検索」画面へ推移</td></tr>
+        </table>
+      </details>
+    </main>
+    <%- include("./_share/footer.ejs") %>
+  </div>  
+  <%- include("./_share/javascripts.ejs") %>
+</body>
+</html>
