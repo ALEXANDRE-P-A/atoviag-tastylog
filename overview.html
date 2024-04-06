@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Overview</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <style>
+    
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background-color: #fff;
+      background-image: url('public/images/background1.png');
+      background-repeat: repeat-y;
+      background-size: 100%;
+    }
+
+    .outerframe {
+      min-height: 100%;
+      position: relative;
+    }
+
+    .outerframe > .container {
+      padding-bottom: 10rem;
+    }
+
+    .outerframe > footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 8rem;
+    }
+
+    .rate-star {
+      font-size: larger;
+      color: transparent;
+      background-image: linear-gradient(#ffcc33, #ffcc33), linear-gradient(#cccccc, #cccccc);
+      background-position: left, right;
+      background-repeat: no-repeat;
+      background-size: var(--rate) 100%, calc(100% - var(--rate)) 100%;
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .rate-star:before{
+      content: "★★★★★";
+    }
+
+    .balloon::before{
+      content: '';
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      left: -15px;
+      top: 15px;
+      border-right: 15px solid  rgba(0,0,0,.125);
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+    }
+
+    .balloon::after{
+      content: '';
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      left: -13px;
+      top: 15px;
+      border-right: 15px solid  #f8f9fa;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+    }
+
+    main {
+      width: 80%;
+      height: 3000px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 55px auto;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin-bottom: 25px;
+    }
+
+    th, td {
+      padding: 5px 15px;
+      border: solid 1px #959b9e;
+      width: 50%;
+    }
+
+    h2, caption {
+      font-size: 1.1em;
+      font-weight: bold;
+      caption-side: top;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      color: #6c757d;
+      text-align: left;
+      /* --------------------------------- addhoc(1) starts here --------------------------------- */
+      width: 80%; 
+      /* --------------------------------- addhoc(1) ends here --------------------------------- */
+    }
+
+    /* --------------------------------- addhoc(2) start here --------------------------------- */
+    details {
+      width: 80%;
+      text-align: left;
+    }
+
+    table.screen-definition {
+      width: 100%;
+    }
+
+    table.screen-definition tr {
+      height: 60px;
+    }
+
+    .pageflow {
+      display: flex; 
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .home-screen-link {
+      position: absolute;
+      top: 8%;
+      left: 13%;
+      width: 11%;
+      height: 17.3%;
+      background-color: rgba(255, 255, 255, .5);
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    img {
+      width: 80%; 
+      border: solid 1px #959b9e;
+      margin-bottom: 25px;
+      z-index: 1;
+    }
+
+    @media screen and (max-width: 767px) {
+      main {
+        width: 100%;
+      }
+      
+      table, details, h2, .pageflow {
+        width: 90%;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .home-screen-link {
+        top: 7%;
+        left: 3.9%;
+        width: 13.7%;
+        height: 17%;
+      }
+    } 
+    /* --------------------------------- addhoc(2) ends here --------------------------------- */
+  </style>
+</head>
+<body>
+  <div class="outerframe">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Atoviag tastylog</a>
+    
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarToggler" style="display: flex; justify-content: space-between;">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/search">Search</a>
+          </li>
+        </ul>
+        <div>
+          <a class="btn btn-outline-success my-2 my-sm-0 mr-2" href="/account/login">login</a>
+          <a class="btn btn-outline-success my-2 my-sm-0" href="/register">register</a>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <table>
+        <tr>
+          <th>アプリサーバー</th><td>heroku</td>
+        </tr>
+      </table>
+        
+      <table>
+        <tr>
+          <th>データーベース</th> <td>MySQL(JawsDB Maria)</td>
+        </tr>
+      </table>
+
+      <!-- --------------------------- adhoc(5) starts here --------------------------- -->
+      <table>
+        <tr>
+          <th>開発環境</th><td>Nodejs</td>
+        </tr>
+      </table>
+      <!-- --------------------------- adhoc(5) ends here --------------------------- -->
+        
+      <table>
+        <caption>機能</caption>
+        <tr>
+          <th class="text-center">名称</th><th class="text-center">概要</th>
+        </tr>
+        <tr>
+          <td>店舗情報検索</td> <td>登録されている店舗を検索、一覧表示</td>
+        </tr>
+        <tr>
+          <td>店舗情報詳細表示</td> <td>登録されている店舗の詳細を表示</td>
+        </tr>
+        <tr>
+          <td>口コミ情報登録</td> <td>店舗に対する口コミ登録</td>
+        </tr>
+        <tr>
+          <td>口コミ情報表示</td> <td>店舗詳細に口コミ情報表示</td>
+        </tr>
+      </table>
+
+      <h2>画面フロー</h2>
+      <!-- --------------------------- adhoc(6) starts here --------------------------- -->
+      <div class="pageflow">
+        <a
+          href="#home-screen"
+          class="home-screen-link"
+        ></a>
+        <img src="public/images/pageflow.png" alt="画像フロー">
+      </div>
+      <!-- --------------------------- adhoc(6) ends here --------------------------- -->
+
+      <h2>画面定義</h2>
+      <details open id="home-screen">
+        <summary>ホーム画面(1)</summary>
+        <!-- --------------------------- adhoc(3) starts here --------------------------- -->
+        <table class="screen-definition">
+          <tr><td>検索ボタン</td><td>テキストボックスに入力された文字列をクエリパラメータに指定して「検索」画面へ遷移</td></tr>
+        </table>
+        <!-- --------------------------- adhoc(3) ends here --------------------------- -->
+      </details>
+      <!-- --------------------------- adhoc(4) starts here --------------------------- -->
+      <details open>
+        <summary>検索画面(2)</summary>
+        <table class="screen-definition">
+          <tr><td>初期設定</td><td>クエリパラメータに指定した条件に合致する店舗を検索して一覧表示</td></tr>
+          <tr><td>検索</td><td>テキストボックスに入力された文字列をクエリパラメータに指定して再表示</td></tr>
+          <tr><td>店舗情報</td><td>該当店舗の「詳細表示」画面へ遷移</td></tr>
+          <tr><td>ページャー</td><td>検索文字は変えず該当ページ番号をクエリパラメータに指定して再表示</td></tr>
+        </table>
+      </details>
+
+      <details open>
+        <summary>詳細表示画面(3)</summary>
+        <table class="screen-definition">
+          <tr><td>初期設定</td><td>指定された店舗IDの情報を表示</td></tr>
+          <tr><td>投稿する</td><td>店舗IDをクエリパラメータに指定して「口コミ入力画面」へ遷移</td></tr>
+        </table>
+      </details>
+
+      <details open>
+        <summary>共通ヘッダー(4)</summary>
+        <table class="screen-definition">
+          <tr><td>検索(Search)</td><td>「検索」画面へ遷移</td></tr>
+          <tr><td>ログイン(未ログイン)</td><td>「ログイン」画面へ遷移</td></tr>
+          <tr><td>ログアウト(ログイン済)</td><td>ログアウトして「ホーム」画面へ遷移</td></tr>
+        </table>
+      </details>
+
+      <details open>
+        <summary>ログイン画面(5)</summary>
+        <table class="screen-definition">
+          <tr><td>ログイン</td><td>指定されたユーザー名、パスワードを利用してログインを実施。成功した場合、「会員ホーム」画面へ遷移、失敗した場合、エラーを表示。</td></tr>
+        </table>
+      </details>
+
+      <details open>
+        <summary>会員ホーム画面(6)</summary>
+        <table class="screen-definition">
+          <tr><td class="text-center">-</td><td class="text-center">-</td></tr>
+        </table>
+      </details>
+
+      <details open>
+        <summary>口コミ入力画面(7)</summary>
+        <table class="screen-definition">
+          <tr><td>初期表示</td><td>指定された店舗IDの情報を表示</td></tr>
+          <tr><td>確認</td><td>指定された入力内容を「口コミ確認」画面へ引き継いで遷移</td></tr>
+        </table>
+      </details>
+
+      <details open>
+        <summary>口コミ入力画面(8)</summary>
+        <table class="screen-definition">
+          <tr><td>初期処理</td><td>前ページから受け継いだデータを検証</td></tr>
+          <tr><td>修正</td><td>入力されている情報を引き継いで「口コミ入力」画面へ遷移</td></tr>
+          <tr><td>登録</td><td>入力された情報を登録「口コミ登録完了」画面へ遷移</td></tr>
+        </table>
+      </details>
+
+      <details open>
+        <summary>口コミ登録完了画面(9)</summary>
+        <table class="screen-definition">
+          <tr><td>初期処理</td><td>前ページから受け継いだデータを検証して<strong>データベースへ登録</strong></td></tr>
+          <tr><td>ショップへ戻る</td><td>口コミ登録した店舗の「詳細表示」画面へ遷移</td></tr>
+        </table>
+      </details>
+      <!-- --------------------------- adhoc(4) ends here --------------------------- -->
+    </main>
+    <footer class="text-muted mt-5">
+      <div class="container">
+        <div class="row pt-5 pb-3">
+          <div class="col-sm-12 text-center">
+            <p>&copy; <span id="footer-year"></span> Atoviag tastylog. All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer> 
+  </div>  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    let date = new Date();
+
+    const footerYear = document.getElementById("footer-year");
+    footerYear.textContent = date.getFullYear();
+  </script>
+</body>
+</html>
