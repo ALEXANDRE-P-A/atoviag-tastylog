@@ -7,7 +7,7 @@
   <style>
     main {
       width: 80%;
-      height: 1000px;
+      height: 3000px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -37,7 +37,86 @@
     h2 {
       color: #6c757d;
       text-align: left;
+      width: 80%; 
     }
+
+    details {
+      width: 80%;
+      text-align: left;
+    }
+
+    table.screen-definition {
+      width: 100%;
+    }
+
+    table.screen-definition tr {
+      height: 60px;
+    }
+
+    .pageflow {
+      display: flex; 
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .screen-link {
+      position: absolute;
+      width: 11%;
+      height: 17.3%;
+      background-color: transparent;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .screen-link:hover {
+      background-color: rgba(255, 255, 255, .5);
+    }
+
+    .screen-link.home { top: 8%; left: 13%; }
+    .screen-link.search { top: 32.4%; left: 13%; }
+    .screen-link.search-details { top: 56.6%; left: 13%; }
+    .screen-link.header { height: 6%; top: 13%; left: 28.5%; }
+    .screen-link.login-screen { top: 32.4%; left: 27%; }
+    .screen-link.member-home-screen { top: 32.4%; left: 45.8%; }
+    .screen-link.review-input-screen { top: 56.6%; left: 45.8%; }
+    .screen-link.review-confirm-screen { top: 56.6%; right: 29%; }
+    .screen-link.review-complete-screen { top: 56.6%; right: 14.7%; }
+
+    img {
+      width: 80%; 
+      border: solid 1px #959b9e;
+      margin-bottom: 25px;
+      z-index: 1;
+    }
+
+    @media screen and (max-width: 767px) {
+      main {
+        width: 100%;
+      }
+      
+      table, details, h2, .pageflow {
+        width: 90%;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .screen-link {
+        width: 13.7%;
+        height: 17%;
+      }
+      .screen-link.home { top: 7%; left: 3.9%; }
+      .screen-link.search { top: 29.5%; left: 3.9%; }
+      .screen-link.search-details { top: 51.9%; left: 3.9%; }
+      .screen-link.header { top: 12.5%; left: 23%; }
+      .screen-link.login-screen { top: 29.5%; left: 21.4%; }
+      .screen-link.member-home-screen { top: 29.5%; left: 44.9%; }
+      .screen-link.review-input-screen { top: 51.9%; left: 44.9%; }
+      .screen-link.review-confirm-screen { top: 51.9%; right: 23.7%; }
+      .screen-link.review-complete-screen { top: 51.9%; right: 6%; }
+    } 
   </style>
 </head>
 <body>
@@ -53,6 +132,12 @@
       <table>
         <tr>
           <th>データーベース</th> <td>MySQL(JawsDB Maria)</td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <th>開発環境</th><td>Nodejs</td>
         </tr>
       </table>
         
@@ -75,13 +160,92 @@
         </tr>
       </table>
 
-      <h2>画面フロー</h2>
+      <h2>画面フロー(上をクリックしたら詳細に遷移します)</h2>
+      <div class="pageflow">
+        <a href="#home-screen" class="screen-link home"></a>
+        <a href="#search-screen" class="screen-link search"></a>
+        <a href="#search-details-screen" class="screen-link search-details"></a>
+        <a href="#header" class="screen-link header"></a>
+        <a href="#login-screen" class="screen-link login-screen"></a>
+        <a href="#member-home-screen" class="screen-link member-home-screen"></a>
+        <a href="#review-input-screen" class="screen-link review-input-screen"></a>
+        <a href="#review-confirm-screen" class="screen-link review-confirm-screen"></a>
+        <a href="#review-complete-screen" class="screen-link review-complete-screen"></a>
+
+        <img src="/public/images/pageflow.png" alt="画像フロー">
+      </div>
 
       <h2>画面定義</h2>
-      <details>
-        <summary>ホーム画面</summary>
-        <table>
-          <tr><td>検索ボタン</td><td>テキストボックスに入力された文字列をクエリパラメータに指定して「検索」画面へ推移</td></tr>
+      <details open id="home-screen">
+        <summary>ホーム画面(1)</summary>
+        <table class="screen-definition">
+          <tr><td>検索ボタン</td><td>テキストボックスに入力された文字列をクエリパラメータに指定して「検索」画面へ遷移</td></tr>
+        </table>
+      </details>
+
+      <details open id="search-screen">
+        <summary>検索画面(2)</summary>
+        <table class="screen-definition">
+          <tr><td>初期設定</td><td>クエリパラメータに指定した条件に合致する店舗を検索して一覧表示</td></tr>
+          <tr><td>検索</td><td>テキストボックスに入力された文字列をクエリパラメータに指定して再表示</td></tr>
+          <tr><td>店舗情報</td><td>該当店舗の「詳細表示」画面へ遷移</td></tr>
+          <tr><td>ページャー</td><td>検索文字は変えず該当ページ番号をクエリパラメータに指定して再表示</td></tr>
+        </table>
+      </details>
+
+      <details open id="search-details-screen">
+        <summary>詳細表示画面(3)</summary>
+        <table class="screen-definition">
+          <tr><td>初期設定</td><td>指定された店舗IDの情報を表示</td></tr>
+          <tr><td>投稿する</td><td>店舗IDをクエリパラメータに指定して「口コミ入力画面」へ遷移</td></tr>
+        </table>
+      </details>
+
+      <details open id="header">
+        <summary>共通ヘッダー(4)</summary>
+        <table class="screen-definition">
+          <tr><td>検索(Search)</td><td>「検索」画面へ遷移</td></tr>
+          <tr><td>ログイン(未ログイン)</td><td>「ログイン」画面へ遷移</td></tr>
+          <tr><td>ログアウト(ログイン済)</td><td>ログアウトして「ホーム」画面へ遷移</td></tr>
+        </table>
+      </details>
+
+      <details open id="login-screen">
+        <summary>ログイン画面(5)</summary>
+        <table class="screen-definition">
+          <tr><td>ログイン</td><td>指定されたユーザー名、パスワードを利用してログインを実施。成功した場合、「会員ホーム」画面へ遷移、失敗した場合、エラーを表示。</td></tr>
+        </table>
+      </details>
+
+      <details open id="member-home-screen">
+        <summary>会員ホーム画面(6)</summary>
+        <table class="screen-definition">
+          <tr><td class="text-center">-</td><td class="text-center">-</td></tr>
+        </table>
+      </details>
+
+      <details open id="review-input-screen">
+        <summary>口コミ入力画面(7)</summary>
+        <table class="screen-definition">
+          <tr><td>初期表示</td><td>指定された店舗IDの情報を表示</td></tr>
+          <tr><td>確認</td><td>指定された入力内容を「口コミ確認」画面へ引き継いで遷移</td></tr>
+        </table>
+      </details>
+
+      <details open id="review-confirm-screen">
+        <summary>口コミ入力画面(8)</summary>
+        <table class="screen-definition">
+          <tr><td>初期処理</td><td>前ページから受け継いだデータを検証</td></tr>
+          <tr><td>修正</td><td>入力されている情報を引き継いで「口コミ入力」画面へ遷移</td></tr>
+          <tr><td>登録</td><td>入力された情報を登録「口コミ登録完了」画面へ遷移</td></tr>
+        </table>
+      </details>
+
+      <details open id="review-complete-screen">
+        <summary>口コミ登録完了画面(9)</summary>
+        <table class="screen-definition">
+          <tr><td>初期処理</td><td>前ページから受け継いだデータを検証して<strong>データベースへ登録</strong></td></tr>
+          <tr><td>ショップへ戻る</td><td>口コミ登録した店舗の「詳細表示」画面へ遷移</td></tr>
         </table>
       </details>
     </main>
