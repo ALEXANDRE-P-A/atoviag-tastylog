@@ -53,7 +53,7 @@
       height: 60px;
     }
 
-    .pageflow {
+    .concept-image {
       display: flex; 
       justify-content: center;
       align-items: center;
@@ -95,7 +95,7 @@
         width: 100%;
       }
       
-      table, details, h2, .pageflow {
+      table, details, h2, .concept-image {
         width: 90%;
       }
 
@@ -123,6 +123,12 @@
   <div class="outerframe">
     <%- include("./_share/navbar.ejs") %>
     <main>
+      <table>
+        <tr>
+          <th>アプリケーションの概要</th><td>飲食店舗の口コミサイト</td>
+        </tr>
+      </table>
+
       <table>
         <tr>
           <th>アプリサーバー</th><td>heroku</td>
@@ -161,7 +167,7 @@
       </table>
 
       <h2>画面フロー(上をクリックしたら詳細に遷移します)</h2>
-      <div class="pageflow">
+      <div class="concept-image">
         <a href="#home-screen" class="screen-link home"></a>
         <a href="#search-screen" class="screen-link search"></a>
         <a href="#search-details-screen" class="screen-link search-details"></a>
@@ -248,6 +254,11 @@
           <tr><td>ショップへ戻る</td><td>口コミ登録した店舗の「詳細表示」画面へ遷移</td></tr>
         </table>
       </details>
+
+      <h2>概念データーモデル</h2>
+      <div class="concept-image">
+        <img src="/public/images/conceptual-data-model.png" alt="画像フロー">
+      </div>
     </main>
     <%- include("./_share/footer.ejs") %>
   </div>  

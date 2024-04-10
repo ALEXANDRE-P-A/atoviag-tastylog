@@ -42,5 +42,6 @@ router.post("/logout", (req, res, next) => {
 });
 
 router.use("/reviews", authorize(PRIVILEGE.NORMAL), require("./account.reviews.js"));
+router.use("/food_report", authorize(PRIVILEGE.NORMAL), require("./food_report.js"));
 
 module.exports = router;

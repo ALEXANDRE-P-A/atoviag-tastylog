@@ -123,7 +123,7 @@
       height: 60px;
     }
 
-    .pageflow {
+    .concept-image {
       display: flex; 
       justify-content: center;
       align-items: center;
@@ -165,7 +165,7 @@
         width: 100%;
       }
       
-      table, details, h2, .pageflow {
+      table, details, h2, .concept-image {
         width: 90%;
       }
 
@@ -211,6 +211,14 @@
       </div>
     </nav>
     <main>
+      <!-- ----- adhoc(2) starts here ----- -->
+      <table>
+        <tr>
+          <th>アプリケーションの概要</th><td>飲食店舗の口コミサイト</td>
+        </tr>
+      </table>
+      <!-- ----- adhoc(2) ends here ----- -->
+
       <table>
         <tr>
           <th>アプリサーバー</th><td>heroku</td>
@@ -249,8 +257,7 @@
       </table>
 
       <h2>画面フロー(上をクリックしたら詳細が遷移します)</h2>
-      <!-- --------------------------- adhoc(6) starts here --------------------------- -->
-      <div class="pageflow">
+      <div class="concept-image">
         <a href="#home-screen" class="screen-link home"></a>
         <a href="#search-screen" class="screen-link search"></a>
         <a href="#search-details-screen" class="screen-link search-details"></a>
@@ -263,17 +270,16 @@
 
         <img src="public/images/pageflow.png" alt="画像フロー">
       </div>
-      <!-- --------------------------- adhoc(6) ends here --------------------------- -->
 
       <h2>画面定義</h2>
       <details open id="home-screen">
-        <summary>ホーム画面(1)</summary>
+        <summary>ホーム画面</summary>
         <table class="screen-definition">
           <tr><td>検索ボタン</td><td>テキストボックスに入力された文字列をクエリパラメータに指定して「検索」画面へ遷移</td></tr>
         </table>
       </details>
       <details open id="search-screen">
-        <summary>検索画面(2)</summary>
+        <summary>検索画面</summary>
         <table class="screen-definition">
           <tr><td>初期設定</td><td>クエリパラメータに指定した条件に合致する店舗を検索して一覧表示</td></tr>
           <tr><td>検索</td><td>テキストボックスに入力された文字列をクエリパラメータに指定して再表示</td></tr>
@@ -283,7 +289,7 @@
       </details>
 
       <details open id="search-details-screen">
-        <summary>詳細表示画面(3)</summary>
+        <summary>詳細表示画面</summary>
         <table class="screen-definition">
           <tr><td>初期設定</td><td>指定された店舗IDの情報を表示</td></tr>
           <tr><td>投稿する</td><td>店舗IDをクエリパラメータに指定して「口コミ入力画面」へ遷移</td></tr>
@@ -291,7 +297,7 @@
       </details>
 
       <details open id="header">
-        <summary>共通ヘッダー(4)</summary>
+        <summary>共通ヘッダー</summary>
         <table class="screen-definition">
           <tr><td>検索(Search)</td><td>「検索」画面へ遷移</td></tr>
           <tr><td>ログイン(未ログイン)</td><td>「ログイン」画面へ遷移</td></tr>
@@ -300,21 +306,21 @@
       </details>
 
       <details open id="login-screen">
-        <summary>ログイン画面(5)</summary>
+        <summary>ログイン画面</summary>
         <table class="screen-definition">
           <tr><td>ログイン</td><td>指定されたユーザー名、パスワードを利用してログインを実施。成功した場合、「会員ホーム」画面へ遷移、失敗した場合、エラーを表示。</td></tr>
         </table>
       </details>
 
       <details open id="member-home-screen">
-        <summary>会員ホーム画面(6)</summary>
+        <summary>会員ホーム画面</summary>
         <table class="screen-definition">
           <tr><td class="text-center">-</td><td class="text-center">-</td></tr>
         </table>
       </details>
 
       <details open id="review-input-screen">
-        <summary>口コミ入力画面(7)</summary>
+        <summary>口コミ入力画面</summary>
         <table class="screen-definition">
           <tr><td>初期表示</td><td>指定された店舗IDの情報を表示</td></tr>
           <tr><td>確認</td><td>指定された入力内容を「口コミ確認」画面へ引き継いで遷移</td></tr>
@@ -322,7 +328,7 @@
       </details>
 
       <details open id="review-confirm-screen">
-        <summary>口コミ入力画面(8)</summary>
+        <summary>口コミ入力画面</summary>
         <table class="screen-definition">
           <tr><td>初期処理</td><td>前ページから受け継いだデータを検証</td></tr>
           <tr><td>修正</td><td>入力されている情報を引き継いで「口コミ入力」画面へ遷移</td></tr>
@@ -331,12 +337,18 @@
       </details>
 
       <details open id="review-complete-screen">
-        <summary>口コミ登録完了画面(9)</summary>
+        <summary>口コミ登録完了画面</summary>
         <table class="screen-definition">
           <tr><td>初期処理</td><td>前ページから受け継いだデータを検証して<strong>データベースへ登録</strong></td></tr>
           <tr><td>ショップへ戻る</td><td>口コミ登録した店舗の「詳細表示」画面へ遷移</td></tr>
         </table>
       </details>
+
+      <h2>概念データーモデル</h2>
+      <div class="concept-image">
+        <img src="public/images/conceptual-data-model.png" alt="画像フロー">
+      </div>      
+
     </main>
     <footer class="text-muted mt-5">
       <div class="container">
